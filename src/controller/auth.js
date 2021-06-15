@@ -45,6 +45,7 @@ exports.signin = (req, res) => {
         const token = jwt.sign(
           {
             _id: user._id,
+            role: user.role,
           },
           process.env.jwtSecret,
           { expiresIn: "1h" }
@@ -65,14 +66,6 @@ exports.signin = (req, res) => {
       });
     }
   });
-};
-
-exports.requireSignin = (req, res, next) => {
-  const token = req.headers.authorization.split(" ")[1];
-  const user = jwt.verify(token, process.env.jwtSecret);
-  req.user = user;
-  console.log(token);
-  next();
 };
 
 // 17:13 time

@@ -1,5 +1,5 @@
 const express = require("express");
-const { signup, signin, requireSignin } = require("../controller/auth");
+const { signup, signin } = require("../controller/auth");
 const {
   validateSignupRequest,
   validateSigninRequest,
@@ -19,5 +19,3 @@ router.post("/signin", validateSigninRequest, isRequestValidated, signin);
 // });
 
 module.exports = router;
-
-//time 12:16
